@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Heading</h1>
+    <p>Paragraph</p>
+    <br>
+    <a href="{{ url_for('template_form') }}">To Template Form</a>
+    <br>
+    <br>
+    <input type="text" id="dynamic_rte_idx" value="1" onInput="idxChange()" placeholder="Put something here"/>
+    <button id="dynamic_rte_btn" onclick="toUrl()">To Dynamic Route Example</button>
+</body>
+<script>
+    var idx = 1;
+    var btn_disable = true;
+
+    function idxChange() {
+        input = document.getElementById("dynamic_rte_idx").value;
+        if (input.length == 0) {
+            document.getElementById("dynamic_rte_btn").disabled = true;
+            idx = input;
+        } else {
+            document.getElementById("dynamic_rte_btn").disabled = false;
+            idx = input;
+        }
+    };
+
+    function toUrl() {
+        window.location.href = "/dynamic_route/" + idx;
+    };
+</script>
+</html>

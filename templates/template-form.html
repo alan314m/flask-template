@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template Form</title>
+    <style>
+        .flashes {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>You typed {{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST" action="{{ url_for('template_form_post') }}">
+      <label for="typeSomething">Type something:</label><br>
+      <input type="text" id="typeSomething" name="typeSomething"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
